@@ -11,6 +11,7 @@ repositories {
 
 dependencies {
     implementation 'org.testng:testng:7.9.0'
+    implementation 'org.slf4j:slf4j-simple:1.7.32'
     compileOnly 'org.projectlombok:lombok:1.18.30'
     annotationProcessor 'org.projectlombok:lombok:1.18.30'
     testCompileOnly 'org.projectlombok:lombok:1.18.30'
