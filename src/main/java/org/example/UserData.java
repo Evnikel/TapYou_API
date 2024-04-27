@@ -1,5 +1,7 @@
 package org.example;
 
+import org.testng.annotations.DataProvider;
+
 public class UserData {
     public static final String BASE_URL = "https://hr-challenge.dev.tapyou.com/api/test";
     public static final String[] GENDERS = {"male", "female", "any"};
@@ -32,5 +34,18 @@ public class UserData {
 
     public static int[] getIds() {
         return IDS;
+    }
+    @DataProvider(name = "userDataProvider")
+    public static Object[][] userDataProvider() {
+        Object[][] data = new Object[GENDERS.length * IDS.length][2];
+        int index = 0;
+        for (String gender : GENDERS) {
+            for (int id : IDS) {
+                data[index][0] = gender;
+                data[index][1] = id;
+                index++;
+            }
+        }
+        return data;
     }
 }

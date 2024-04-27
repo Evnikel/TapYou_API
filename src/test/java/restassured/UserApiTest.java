@@ -27,13 +27,12 @@ public class UserApiTest {
 
         }
     }
-
-    @Test
-    public void testUserInfoById(UserData userData) {
+    @Test(dataProvider = "userDataProvider", dataProviderClass = UserData.class)
+    public void testUserInfoById(String gender, int id) {
         RestAssured.baseURI = UserData.getBaseUrl();
 
         given()
-                .pathParam("id", userData.getId())
+                .pathParam("id", id)
                 .when()
                 .get("/user/{id}")
                 .then()
@@ -41,13 +40,13 @@ public class UserApiTest {
                 .assertThat()
                 .statusCode(200)
                 .body("isSuccess", is(true))
-                .body("user.id", equalTo(userData.getId()))
+                .body("user.id", equalTo(id))
                 .body("user.name", notNullValue())
-                .body("user.gender", equalTo(userData.getGender()))
+                .body("user.gender", equalTo(gender))
                 .body("user.age", greaterThan(0))
                 .body("user.city", notNullValue())
                 .body("user.registrationDate", notNullValue())
-                .body("user.gender", anyOf(equalTo(userData.getGender()), equalTo("magic"), equalTo("McCloud")));
+                .body("user.gender", anyOf(equalTo(gender), equalTo("magic"), equalTo("McCloud")));
     }
 
 }
