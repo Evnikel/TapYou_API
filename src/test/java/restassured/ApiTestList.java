@@ -19,7 +19,7 @@ public class ApiTestList {
 
     @Test
      public void testUserListApi() {
-        String gender = "male";
+        String gender = "any";
         Response response = RestAssured.get("https://hr-challenge.dev.tapyou.com/api/test/users?gender=" + gender);
 
         Assert.assertEquals(response.getStatusCode(), 200);

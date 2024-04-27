@@ -23,8 +23,21 @@ public class UserApiTest {
                 {"female", 300},
                 {"female", 502},
                 {"female", 503},
-                {"magic", 300},
-                {"McCloud", 911}
+                {"any", 0},
+                {"any", 5},
+                {"any", 10},
+                {"any", 15},
+                {"any", 16},
+                {"any", 33},
+                {"any", 94},
+                {"any", 212},
+                {"any", 300},
+                {"any", 501},
+                {"any", 502},
+                {"any", 503},
+                {"any", 911},
+                {"magic", -1},
+                {"McCloud", -1}
         };
     }
 
@@ -46,6 +59,7 @@ public class UserApiTest {
                 .body("user.gender", equalTo(gender))
                 .body("user.age", greaterThan(0))
                 .body("user.city", notNullValue())
-                .body("user.registrationDate", notNullValue());
+                .body("user.registrationDate", notNullValue())
+                .body("user.gender", anyOf(equalTo(gender), equalTo("magic"), equalTo("McCloud")));
     }
 }
