@@ -4,48 +4,25 @@ import org.testng.annotations.DataProvider;
 
 public class UserData {
     public static final String BASE_URL = "https://hr-challenge.dev.tapyou.com/api/test";
-    public static final String[] GENDERS = {"male", "female", "any"};
-    public static final int[] IDS = {10, 15, 33, 94, 501, 911, 5, 16, 300, 502, 503, 0, 212};
+    public static final String USERS_ENDPOINT = BASE_URL + "/users";
+    public static final String USER_ENDPOINT = BASE_URL + "/user/{id}";
 
-    private final String gender;
-    private final int id;
-
-    public UserData(String gender, int id) {
-        this.gender = gender;
-        this.id = id;
+    @DataProvider(name = "genderData")
+    public static Object[][] genderData() {
+        return new Object[][]{
+                {"male"},
+                {"female"},
+                {"any"}
+        };
     }
 
-    public String getGender() {
-        return gender;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public static String getBaseUrl() {
-        return BASE_URL;
-    }
-
-    public static String[] getGenders() {
-        return GENDERS;
-    }
-
-
-    public static int[] getIds() {
-        return IDS;
-    }
-    @DataProvider(name = "userDataProvider")
-    public static Object[][] userDataProvider() {
-        Object[][] data = new Object[GENDERS.length * IDS.length][2];
-        int index = 0;
-        for (String gender : GENDERS) {
-            for (int id : IDS) {
-                data[index][0] = gender;
-                data[index][1] = id;
-                index++;
-            }
-        }
-        return data;
+    @DataProvider(name = "idData")
+    public static Object[][] idData() {
+        return new Object[][]{
+                {"male", new int[]{10, 15, 33, 94, 501}},
+                {"female", new int[]{5, 15, 16, 300, 502, 503}},
+                {"any", new int[]{0, 5, 10, 15, 16, 33, 94, 212, 300, 501, 502, 503, 911}}
+        };
+//
     }
 }
