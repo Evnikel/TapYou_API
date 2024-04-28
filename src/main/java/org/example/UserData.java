@@ -23,6 +23,13 @@ public class UserData {
                 {"female", new int[]{5, 15, 16, 300, 502, 503}},
                 {"any", new int[]{0, 5, 10, 15, 16, 33, 94, 212, 300, 501, 502, 503, 911}}
         };
-//
     }
+
+        @DataProvider(name = "idDataMultiple")
+        public static Object[][] idDataMultiple() {
+            return new Object[][]{
+                    {0}, {5}, {10}, {15}, {16}, {33}, {94}, {212}, {300}, {501}, {502}, {503}, {911}
+            };
+        }
+
 }

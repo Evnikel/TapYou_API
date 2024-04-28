@@ -2,35 +2,16 @@ package api;
 
 import io.restassured.RestAssured;
 import io.restassured.http.ContentType;
-import io.restassured.response.Response;
 import org.example.UserData;
 import org.testng.annotations.Test;
 
 import static io.restassured.RestAssured.given;
-import static org.example.UserData.USERS_ENDPOINT;
 import static org.example.UserData.USER_ENDPOINT;
 import static org.hamcrest.Matchers.*;
+import static org.hamcrest.Matchers.notNullValue;
 
-public class UserApiTest {
-    @Test(dataProvider = "genderData", dataProviderClass = UserData.class)
-    public void testUserListByGender(String gender) {
-        RestAssured.baseURI = UserData.BASE_URL;
-         {
-            System.out.println("\u001B[34mResponses for gender " + gender + ":\u001B[0m");
-             given()
-                    .param("gender", gender)
-                    .when()
-                    .contentType(ContentType.JSON)
-                    .get(USERS_ENDPOINT)
-                    .then()
-                    .log().all()
-                    .assertThat()
-                    .statusCode(200)
-                    .body("isSuccess", is(true));
+public class UserGenderAnd_ID {
 
-
-        }
-    }
     @Test(dataProvider = "idData", dataProviderClass = UserData.class)
     public void testUserInfoById(String gender, int[] ids) {
         RestAssured.baseURI = UserData.BASE_URL;
@@ -60,5 +41,4 @@ public class UserApiTest {
             }
         }
     }
-
 }
