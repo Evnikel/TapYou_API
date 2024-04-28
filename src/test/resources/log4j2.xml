@@ -1,16 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="WARN">
     <Appenders>
-        <!-- Define appenders here -->
+        <Console name="Console" target="SYSTEM_OUT">
+            <PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
+        </Console>
     </Appenders>
     <Loggers>
-        <!-- Define loggers here -->
+        <Logger name="api.UserGenderList" level="info" additivity="false">
+            <AppenderRef ref="Console" />
+        </Logger>
+        <Logger name="api.UserGenderAnd_ID" level="info" additivity="false">
+            <AppenderRef ref="Console" />
+        </Logger>
+        <Logger name="api.UserID" level="info" additivity="false">
+            <AppenderRef ref="Console" />
+        </Logger>
     </Loggers>
 </Configuration>
 
-<Console name="Console" target="SYSTEM_OUT">
-<PatternLayout pattern="%d{HH:mm:ss.SSS} [%t] %-5level %logger{36} - %msg%n" />
-</Console>
-<Logger name="api.UserGenderList" level="info" additivity="false">
-<AppenderRef ref="Console" />
-</Logger>
+
