@@ -36,7 +36,7 @@ public class UserGenderAnd_ID {
                         .body("user.city", notNullValue())
                         .body("user.registrationDate", notNullValue());
             } catch (AssertionError e) {
-                System.out.println("\\u001B[31mTest failed for gender " + gender + " and id " + id);
+                System.out.println("\u001B[31mTest failed for gender " + gender + " and id " + id);
                 System.err.println("Error message: " + e.getMessage() + "\u001B[0m");
             }
         }
